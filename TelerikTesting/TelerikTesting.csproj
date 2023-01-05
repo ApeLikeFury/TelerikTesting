@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseRazorSourceGenerator>false</UseRazorSourceGenerator>
+  </PropertyGroup>
+  
+
+  <ItemGroup>
+    <PackageReference Include="Telerik.UI.for.Blazor.Trial" Version="3.7.0" />
+  </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties UseCdnSupport="True" /></VisualStudio></ProjectExtensions>
+
+</Project>

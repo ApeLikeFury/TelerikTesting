@@ -1,0 +1,17 @@
+﻿@using TelerikTesting.Models;
+
+<li class="draggable" draggable="true" @ondragstart="@(() => HandleDragStart(GridModel))">
+    <div class="tab" draggable="true"></div>
+    @GridModel.fragment
+    <textArea disabled></textArea>
+</li>
+
+@code {
+    [CascadingParameter] GridContainer Container { get; set; }
+    [Parameter] public GridFragment GridModel { get; set; }
+
+    private void HandleDragStart(GridFragment selectedFragment)
+    {
+        Container.Payload = selectedFragment;
+    }
+}

@@ -1,0 +1,25 @@
+﻿@using TelerikTesting.Models;
+<div class="jobs-container">
+    <CascadingValue Value="this">
+        @ChildContent
+    </CascadingValue>
+</div>
+
+@code {
+    [Parameter] public List<GridFragment> fragments { get; set; }
+    [Parameter] public RenderFragment ChildContent { get; set; }
+    [Parameter] public EventCallback<GridFragment> OnFragmentUpdated { get; set; }
+
+    public GridFragment Payload { get; set; }
+
+    public async Task UpdateJobAsync(int NewIndex)
+    {
+        var frag = fragments.SingleOrDefault(x => x.Id == Payload.Id);
+
+        if (frag != null)
+        {
+            frag.PositionIndex = NewIndex;
+            await OnFragmentUpdated.InvokeAsync(Payload);
+        }
+    }
+}

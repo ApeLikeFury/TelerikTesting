@@ -1,0 +1,62 @@
+﻿@page "/dragAndDrop"
+@using TelerikTesting.Models;
+
+
+<GridContainer fragments="Fragments" OnFragmentUpdated="HandleStatusUpdated">
+    <DataEntryPanel ListIndex="1" />
+    <DataEntryPanel ListIndex="2" />
+    <DataEntryPanel ListIndex="3" />
+    <DataEntryPanel ListIndex="4" />
+</GridContainer>
+
+
+
+@code {
+    string text;
+    string value;
+    DateTime date;
+    bool enabled;
+    List<string> items = new() { "1", "2", "3" };
+
+    List<GridFragment> Fragments = new List<GridFragment>();
+
+    protected override void OnInitialized()
+    {
+        Fragments.Add(new GridFragment { Id = 1, PositionIndex = 1, fragment = DropdownList() });
+        Fragments.Add(new GridFragment { Id = 2, PositionIndex = 2, fragment = Switch() });
+        Fragments.Add(new GridFragment { Id = 3, PositionIndex = 4, fragment = DatePicker() });
+
+        Fragments.Add(new GridFragment { Id = 4, PositionIndex = 1, fragment = DropdownList() });
+        Fragments.Add(new GridFragment { Id = 5, PositionIndex = 2, fragment = Switch() });
+
+
+        Fragments.Add(new GridFragment { Id = 6, PositionIndex = 1, fragment = TextBox() });
+       
+    }
+
+    void HandleStatusUpdated(GridFragment updatedJob)
+    {
+        Console.WriteLine(updatedJob.PositionIndex);
+    }
+
+    RenderFragment DropdownList()
+    {
+        return @<TelerikDropDownList Data="items" @bind-Value="value"></TelerikDropDownList>;
+    }
+
+    RenderFragment DatePicker()
+    {
+        return @<TelerikDatePicker @bind-Value="date"></TelerikDatePicker>;
+    }
+
+    RenderFragment TextBox()
+    {
+        return @<TelerikTextArea @bind-Value="text"></TelerikTextArea>;
+    }
+
+    RenderFragment Switch()
+    {
+        return @<TelerikSwitch @bind-Value="enabled"></TelerikSwitch>;
+    }
+}
+
