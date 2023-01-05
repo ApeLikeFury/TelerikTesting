@@ -1,0 +1,39 @@
+﻿<h3>ToolboxDrawer</h3>
+
+<div class="toolbox-container">
+    <div class="toolbox">
+        <div class="toolbox-tab"> || </div>
+    </div>
+</div>
+
+
+@code {
+
+}
+<style>
+
+    .toolbox {
+        min-height: 300px;
+        width: 200px;
+        position: absolute;
+        right: -190px;
+        margin-bottom: 10px;
+        padding: 10px 25px;
+        background: #EAB33C;
+    }
+
+    .toolbox-tab{
+        height: 30px;
+        width: 20px;
+        position: absolute;
+        border-radius: 5px;
+        left: -15px;
+        background: #EAB33C;
+    }
+
+    .toolbox:hover {
+       right: 10px;
+       transition-duration: 0.3s;
+    }
+</style>
+
